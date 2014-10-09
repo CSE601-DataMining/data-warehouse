@@ -34,6 +34,9 @@ public class DataService {
 		else if (queryNum.equals("2-3")) {
 			return queryPartTwo3(inMap);
 		}
+		else if (queryNum.equals("2-4")) {
+			return queryPartTwo4(inMap);
+		}
 		else{
 			return null;
 		}
@@ -85,6 +88,22 @@ public class DataService {
 						"and mf.mu_id =" + muID + "" +
 						"and gf.cl_id =" + clID + "";
 		
+		return jdbcTemplate.queryForList(queryString);
+	} 
+	
+	private List<Map<String, Object>> queryPartTwo4(Map<String, String> inMap){
+		String queryString = "";
+		String name = inMap.get("name");
+		int goID = Integer.parseInt(inMap.get("go_id"));
+		queryString = "select mf.exp"+
+				"from gene_fact gf"+
+				"join probe pb on gf.UID = pb.UID"+
+				"join microarray_fact mf on pb.pb_id = mf.pb_id"+
+				"join clinical_fact cf on mf.s_id = cf.s_id"+
+				"join disease ds on ds.ds_id = cf.ds_id"+
+				"where gf.go_id = "+goID+
+				"and ds.name='"+name+"'"; 
+				
 		return jdbcTemplate.queryForList(queryString);
 	} 
 

@@ -10,12 +10,18 @@ select dr.type,p.p_id from patient p join diagnosis dg on p.p_id = dg.p_id join 
 
 
 #2
-select distinct dr.dr_type from patient p join diagnosis dg on p.p_id = dg.p_id join disease ds on ds.ds_id = dg.ds_id join drug_use dgu on dgu.p_id=p.p_id join drug dr on dr.dr_id=dgu.dr_id where ds.description ='tumor'
 
-select p_id from patient group by p_id having count(p_id) > 1
+select distinct dr.dr_type
+from drug dr 
+join clinical_fact cf on dr.dr_id = cf.dr_id
+join disease ds on ds.ds_id = cf.ds_id
+where ds.description='tumor'
+
+
+
+
 
 #3
-select * from patient p join diagnosis dg on p.p_id = dg.p_id join disease ds on ds.ds_id = dg.ds_id join sample s on s.p_id = p.p_id where ds.name ='ALL'
 
 select mf.exp
 from clinical_fact cf 

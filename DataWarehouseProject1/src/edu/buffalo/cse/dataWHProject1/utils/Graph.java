@@ -2,6 +2,10 @@ package edu.buffalo.cse.dataWHProject1.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import edu.buffalo.cse.dataWHProject1.controller.DataService;
 
 
 public class Graph {
@@ -138,9 +142,21 @@ public class Graph {
 	
 	public static void main(String args[])
 	{
-		Graph g = new Graph();
-		g.Display();
-		System.out.println();
-		System.out.println(g.Find("disease", "cluster"));
+//		Graph g = new Graph();
+//		g.Display();
+//		System.out.println();
+//		System.out.println(g.Find("disease", "cluster"));
+		
+		
+		DataService  ds = new DataService();
+		HashMap<String,String> inMap = new HashMap<String, String>();
+		inMap.put("queryNum", "2-4");
+		inMap.put("name", "ALL");
+		inMap.put("go_id", "12502");
+		List<Map<String, Object>> result = ds.query(inMap);
+		for (Map<String, Object> row : result)
+		{
+			for (Map.Entry<String, String>)
+		}
 	}
 }
