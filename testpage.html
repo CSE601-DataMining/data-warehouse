@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data Mining</title>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+ <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+  
+ <script>
+  $(function() {
+    $( "#menu" ).menu();
+  });
+  </script>
+  
+  <style>
+  .ui-menu { width: 150px; }
+  </style>
+  
+  <script>
+      $(function() {
+
+  $("#first-choice").change(function() {
+  //    var str="<option value="+"description"+">Disease Description</option>";
+    var vals = ['one', 'two', 'three'];
+    var $selectTwo = $("#second-choice");
+    $selectTwo.find('option').remove().end();
+    $.each(vals, function(index, value) {
+	$selectTwo.append("<option>" + value + "</option>");
+    });
+
+      //$("#second-choice").hide();
+      //$("#result").html("here")
+ //       $("#second-choice").append("<option>Disease Description</option>");
+ //     $("#second-choice").load("textdata/" + $(this).val() + ".txt");
+    });
+
+});
+   </script>
+   
+  <!-- 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">-->
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+  
+  
+</head>
+<body>
+    <div id ="intro">
+        <h1>Data Mining - CSE 601 </h1> 
+        <h1>Project 2 - Data Warerhouse/OLAP System </h1> 
+      
+            <ul> 
+              <li>Ankit Arora</li>
+              <li>Dilip Pednekar</li>
+              <li>Kaustubh Vartak</li>
+            </ul>
+    
+    </div> 
+<div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">Query 1</a></li>
+      <li><a href="#tabs-2">Query 2</a></li>
+      <li><a href="#tabs-3">Query 3</a></li>
+      <li><a href="#tabs-4">Query 4</a></li>
+      <li><a href="#tabs-5">Query 5</a></li>
+      <li><a href="#tabs-6">Query 6</a></li>
+    </ul>
+    <div id="tabs-1">
+        <select id="first-choice">
+          <option selected value="base">Please Select</option>
+          <option value="description">Disease Description</option>
+          <option value="name">Disease Name</option>
+          <option value="type">Disease Type</option>
+        </select>
+
+        <select id="second-choice">
+          <option>Please choose from above</option>
+        </select>  
+        <div id="result"> </div>
+        <br>
+        <p>
+    </div>
+  <div id="tabs-2">
+    <p>Query 2 ka form ithe taka</p>
+  </div>
+  <div id="tabs-3">
+    <p>Query 3 ka form ithe taka</p>
+  </div>
+  <div id="tabs-4">
+    <p>Query 4 ka form ithe taka</p>
+  </div>
+  <div id="tabs-5">
+    <p>Query 5 ka form ithe taka</p>
+  </div>
+  <div id="tabs-6">
+    <p>Query 6 ka form ithe taka</p>
+  </div>
+
+</div>
+</body>
+</html>
