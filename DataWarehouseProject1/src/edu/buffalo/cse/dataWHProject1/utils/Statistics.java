@@ -264,12 +264,12 @@ public class Statistics {
 		
 		if (pVal < 0.01)
 		{
-			System.out.println("Disease");
+			System.out.println("Disease p: "+pVal);
 			return true;
 		}
 		else
 		{
-			System.out.println("No disease");
+			System.out.println("No disease p:" +pVal);
 			return false;
 		}
 	}

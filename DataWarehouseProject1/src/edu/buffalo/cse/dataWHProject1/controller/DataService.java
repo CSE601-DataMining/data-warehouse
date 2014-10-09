@@ -182,7 +182,7 @@ public class DataService {
 						"join clinical_fact cf on mf.s_id = cf.s_id "+
 						"join disease ds on ds.ds_id = cf.ds_id "+
 						"where ds.name='"+name+"' "+
-						"order by cf.p_id  ";
+						"order by cf.p_id, pb.UID  ";
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
@@ -212,7 +212,7 @@ public class DataService {
 				"join probe pb on mf.pb_id=pb.pb_id "+
 				"where pb.UID in ("+UIDs+") "+
 				"and ds.name='"+name+"' "+
-				"order by cf.p_id, pb.UID, mf.exp ";
+				"order by cf.p_id, pb.UID";
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
@@ -228,7 +228,7 @@ public class DataService {
 				"join probe pb on mf.pb_id=pb.pb_id "+
 				"where pb.UID in ("+UIDs+") "+
 				"and ds.name<>'"+name+"' "+
-				"order by cf.p_id, pb.UID, mf.exp ";
+				"order by cf.p_id, pb.UID";
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
@@ -239,7 +239,8 @@ public class DataService {
 		String UIDs = inMap.get("UIDs");
 		queryString = "select "+patientID+" "+
 				"from test_samples ts "+
-				"where test_sample_id in ("+UIDs+") ";
+				"where test_sample_id in ("+UIDs+") "+
+				"order by test_sample_id";
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
