@@ -20,31 +20,31 @@
   </style>
   
   <script>
-      $(function() {
 
+    $(function() {
   $("#first-choice").change(function() {
-  //    var str="<option value="+"description"+">Disease Description</option>";
     var vals = ['one', 'two', 'three'];
     var $selectTwo = $("#second-choice");
     $selectTwo.find('option').remove().end();
+    $selectTwo.append("<option>" + "Please select" + "</option>");
     $.each(vals, function(index, value) {
 	$selectTwo.append("<option>" + value + "</option>");
     });
-
-      //$("#second-choice").hide();
-      //$("#result").html("here")
- //       $("#second-choice").append("<option>Disease Description</option>");
- //     $("#second-choice").load("textdata/" + $(this).val() + ".txt");
+    var first = $('#first-choice :selected').val();
+    $('#result').val(first);
     });
-
 });
+
+$(function() {
+    $("#second-choice").change(function() {
+      var second = $('#second-choice :selected').val();
+//      var $result2 = $('#result');
+      $('#result2').val(second);
+    });
+});
+
    </script>
    
-  <!-- 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">-->
   <script>
   $(function() {
     $( "#tabs" ).tabs();
@@ -75,19 +75,21 @@
       <li><a href="#tabs-6">Query 6</a></li>
     </ul>
     <div id="tabs-1">
-        <select id="first-choice">
+        <select id="first-choice" required>
           <option selected value="base">Please Select</option>
           <option value="description">Disease Description</option>
           <option value="name">Disease Name</option>
           <option value="type">Disease Type</option>
         </select>
 
-        <select id="second-choice">
+        <select id="second-choice" required>
           <option>Please choose from above</option>
         </select>  
-        <div id="result"> </div>
-        <br>
-        <p>
+            <form>
+                <input id="result" type="hidden" name="result">
+                <input id="result2" type="hidden" name="result2">
+                Submit: <button type="button">Click Me!</button>
+            </form>
     </div>
   <div id="tabs-2">
     <p>Query 2 ka form ithe taka</p>
