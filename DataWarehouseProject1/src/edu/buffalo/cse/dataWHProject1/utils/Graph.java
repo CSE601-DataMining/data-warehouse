@@ -165,29 +165,29 @@ public class Graph {
 		//2.4
 		HashMap<String,String> inMap = new HashMap<String, String>();
 		
-		inMap.put("queryNum", "2-4");
-		inMap.put("name", "ALL");
-		inMap.put("go_id", "12502");
-		
-		List<Map<String, Object>> result1 = ds.query(inMap);
-		inMap.put("queryNum", "2-45");
-		List<Map<String, Object>> result2 = ds.query(inMap);
-		
-		//System.out.println(Statistics.ttest(Statistics.GetValues(result1),Statistics.GetValues(result2)));
-		
-		//2.5
-		inMap = new HashMap<String, String>();
-		
-		inMap.put("queryNum", "2-5");
-		inMap.put("go_id", "7154");
-		inMap.put("name", "ALL");
-		result1 = ds.query(inMap);
-		inMap.put("name", "AML");
-		result2 = ds.query(inMap);
-		inMap.put("name", "colon tumor");
-		List<Map<String, Object>> result3 = ds.query(inMap);
-		inMap.put("name", "breast tumor");
-		List<Map<String, Object>> result4 = ds.query(inMap);
+//		inMap.put("queryNum", "2-4");
+//		inMap.put("name", "ALL");
+//		inMap.put("go_id", "12502");
+//		
+//		List<Map<String, Object>> result1 = ds.query(inMap);
+//		inMap.put("queryNum", "2-45");
+//		List<Map<String, Object>> result2 = ds.query(inMap);
+//		
+//		//System.out.println(Statistics.ttest(Statistics.GetValues(result1),Statistics.GetValues(result2)));
+//		
+//		//2.5
+//		inMap = new HashMap<String, String>();
+//		
+//		inMap.put("queryNum", "2-5");
+//		inMap.put("go_id", "7154");
+//		inMap.put("name", "ALL");
+//		result1 = ds.query(inMap);
+//		inMap.put("name", "AML");
+//		result2 = ds.query(inMap);
+//		inMap.put("name", "colon tumor");
+//		List<Map<String, Object>> result3 = ds.query(inMap);
+//		inMap.put("name", "breast tumor");
+//		List<Map<String, Object>> result4 = ds.query(inMap);
 
 //		System.out.println(Statistics.fstat(Statistics.GetValues(result1),
 //				Statistics.GetValues(result2),
@@ -195,61 +195,62 @@ public class Graph {
 //				Statistics.GetValues(result4)));
 		
 		//2.6
-		inMap.put("queryNum", "2-6");
-		inMap.put("go_id", "7154");
-		inMap.put("name", "ALL");
-		result1 = ds.query(inMap);
-		inMap.put("name", "AML");
-		result2 = ds.query(inMap);
-		//System.out.println(Statistics.parttwo6(result1,null));
+//		inMap.put("queryNum", "2-6");
+//		inMap.put("go_id", "7154");
+//		inMap.put("name", "ALL");
+//		List<Map<String, Object>> result1 = ds.query(inMap);
+//		inMap.put("name", "AML");
+//		List<Map<String, Object>> result2 = ds.query(inMap);
+////		System.out.println(Statistics.parttwo6(result1,null));
+//		System.out.println(Statistics.parttwo6(result1,result2));
 		//3.1
-		inMap.put("queryNum", "3-1");
-		inMap.put("name", "ALL");
-		result1 = ds.query(inMap);
-		
-		inMap.put("queryNum", "3-15");
-		inMap.put("name", "ALL");
-		result2 = ds.query(inMap);
-		
-		//List<Integer> infoGene = Statistics.FindInfoGene(result1, result2);
-		
-		//System.out.println(infoGene.size());
-		
-		//3.2
-		inMap.put("queryNum", "3-1");
-		inMap.put("name", "ALL");
-		result1 = ds.query(inMap);
-		
-		inMap.put("queryNum", "3-15");
-		inMap.put("name", "ALL");
-		result2 = ds.query(inMap);
-		
-		List<Integer> infoGene = Statistics.FindInfoGene(result1, result2);
-		
-		String UIDs = "";
-		for (Integer UID : infoGene)
-		{
-			UIDs += UID +",";
-		}
-		System.out.println(UIDs);
-		inMap.put("queryNum", "3-2");
-		inMap.put("name", "ALL");
-		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
-		result3 = ds.query(inMap);
-		
-		inMap.put("queryNum", "3-25");
-		inMap.put("name", "ALL");
-		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
-		result4 = ds.query(inMap);
-		inMap.put("queryNum", "3-26");
-		inMap.put("patientID", "test1");
-		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
-		List<Map<String, Object>> result5 = ds.query(inMap);
-		
-		ArrayList<Double> corr1 =  Statistics.partThree2(result3, result5);
-		ArrayList<Double> corr2 =  Statistics.partThree2(result4, result5);
-		Statistics.partThree2Result(corr1, corr2);
-		//System.out.println(infoGene.size());
+//		inMap.put("queryNum", "3-1");
+//		inMap.put("name", "ALL");
+//		result1 = ds.query(inMap);
+//		
+//		inMap.put("queryNum", "3-15");
+//		inMap.put("name", "ALL");
+//		result2 = ds.query(inMap);
+//		
+//		//List<Integer> infoGene = Statistics.FindInfoGene(result1, result2);
+//		
+//		//System.out.println(infoGene.size());
+//		
+//		//3.2
+//		inMap.put("queryNum", "3-1");
+//		inMap.put("name", "ALL");
+//		result1 = ds.query(inMap);
+//		
+//		inMap.put("queryNum", "3-15");
+//		inMap.put("name", "ALL");
+//		result2 = ds.query(inMap);
+//		
+//		List<Integer> infoGene = Statistics.FindInfoGene(result1, result2);
+//		
+//		String UIDs = "";
+//		for (Integer UID : infoGene)
+//		{
+//			UIDs += UID +",";
+//		}
+//		System.out.println(UIDs);
+//		inMap.put("queryNum", "3-2");
+//		inMap.put("name", "ALL");
+//		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
+//		result3 = ds.query(inMap);
+//		
+//		inMap.put("queryNum", "3-25");
+//		inMap.put("name", "ALL");
+//		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
+//		result4 = ds.query(inMap);
+//		inMap.put("queryNum", "3-26");
+//		inMap.put("patientID", "test1");
+//		inMap.put("UIDs", UIDs.substring(0, UIDs.length()-1));
+//		List<Map<String, Object>> result5 = ds.query(inMap);
+//		
+//		ArrayList<Double> corr1 =  Statistics.partThree2(result3, result5);
+//		ArrayList<Double> corr2 =  Statistics.partThree2(result4, result5);
+//		Statistics.partThree2Result(corr1, corr2);
+//		//System.out.println(infoGene.size());
 		
 		
 		

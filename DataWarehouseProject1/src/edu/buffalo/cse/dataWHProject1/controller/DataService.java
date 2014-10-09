@@ -168,7 +168,7 @@ public class DataService {
 				"join disease ds on ds.ds_id = cf.ds_id "+
 				"where gf.go_id = "+goID+" "+
 				"and ds.name='"+name+"' "+
-				"order by cf.p_id"; 
+				"order by cf.p_id, gf.UID"; 
 				
 		return jdbcTemplate.queryForList(queryString);
 	}

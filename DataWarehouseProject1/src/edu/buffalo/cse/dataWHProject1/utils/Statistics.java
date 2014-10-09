@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.apache.commons.math3.stat.inference.TestUtils;
 
 public class Statistics {
@@ -107,6 +105,7 @@ public class Statistics {
 		double covar = covariance(array1,array2);
 		double var1 = variance(array1);
 		double var2 = variance(array2);
+		
 		
 		return covar/(Math.sqrt(var1*var2));
 	}
@@ -265,12 +264,12 @@ public class Statistics {
 		
 		if (pVal < 0.01)
 		{
-			System.out.println("Disease hoga tereko");
+			System.out.println("Disease");
 			return true;
 		}
 		else
 		{
-			System.out.println("Bach gaya sambha");
+			System.out.println("No disease");
 			return false;
 		}
 	}
