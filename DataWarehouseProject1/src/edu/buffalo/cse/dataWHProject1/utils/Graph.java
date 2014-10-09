@@ -1,9 +1,12 @@
 package edu.buffalo.cse.dataWHProject1.utils;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import edu.buffalo.cse.dataWHProject1.controller.DataService;
 
@@ -149,14 +152,49 @@ public class Graph {
 		
 		
 		DataService  ds = new DataService();
+		
+        MysqlDataSource mysqlDS = new MysqlDataSource();
+        
+           
+           
+            mysqlDS.setURL("jdbc:mysql://localhost:3306/warehouse");
+            mysqlDS.setUser("dbuser");
+            mysqlDS.setPassword("cse601");
+        
+        ds.dataSource = mysqlDS;
+		//2.4
 		HashMap<String,String> inMap = new HashMap<String, String>();
+		
 		inMap.put("queryNum", "2-4");
 		inMap.put("name", "ALL");
 		inMap.put("go_id", "12502");
-		List<Map<String, Object>> result = ds.query(inMap);
-		for (Map<String, Object> row : result)
-		{
-			for (Map.Entry<String, String>)
-		}
+		
+		List<Map<String, Object>> result1 = ds.query(inMap);
+		inMap.put("queryNum", "2-45");
+		List<Map<String, Object>> result2 = ds.query(inMap);
+		
+		//System.out.println(Statistics.ttest(Statistics.GetValues(result1),Statistics.GetValues(result2)));
+		
+		//2.5
+		inMap = new HashMap<String, String>();
+		
+		inMap.put("queryNum", "2-5");
+		inMap.put("go_id", "7154");
+		inMap.put("name", "ALL");
+		result1 = ds.query(inMap);
+		inMap.put("name", "AML");
+		result2 = ds.query(inMap);
+		inMap.put("name", "colon tumor");
+		List<Map<String, Object>> result3 = ds.query(inMap);
+		inMap.put("name", "breast tumor");
+		List<Map<String, Object>> result4 = ds.query(inMap);
+		System.out.println(Statistics.fstat(Statistics.GetValues(result1),
+				Statistics.GetValues(result2),
+				Statistics.GetValues(result3),
+				Statistics.GetValues(result4)));
+		
+		
 	}
+	
+	
 }
