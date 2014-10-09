@@ -41,7 +41,7 @@ public class DataService {
 			return queryPartTwo45(inMap);
 		}
 		else if (queryNum.equals("2-5")) {
-			return queryPartTwo45(inMap);
+			return queryPartTwo5(inMap);
 		}
 		else{
 			return null;

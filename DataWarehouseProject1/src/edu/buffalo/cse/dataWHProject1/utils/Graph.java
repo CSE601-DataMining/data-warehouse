@@ -188,11 +188,13 @@ public class Graph {
 		List<Map<String, Object>> result3 = ds.query(inMap);
 		inMap.put("name", "breast tumor");
 		List<Map<String, Object>> result4 = ds.query(inMap);
-		System.out.println(Statistics.fstat(Statistics.GetValues(result1),
-				Statistics.GetValues(result2),
-				Statistics.GetValues(result3),
-				Statistics.GetValues(result4)));
+
+//		System.out.println(Statistics.fstat(Statistics.GetValues(result1),
+//				Statistics.GetValues(result2),
+//				Statistics.GetValues(result3),
+//				Statistics.GetValues(result4)));
 		
+		//2.6
 		
 	}
 	

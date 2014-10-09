@@ -55,7 +55,7 @@ public class Statistics {
 		int n2 = values2.size();
 		
 		double pVar = ((n1-1)*var1 +(n2-1)*var2)/(n1+n2-2);
-		System.out.println("pvar "+pVar);
+		
 		return (m1-m2)/(Math.sqrt(pVar*(1.0d/n1 + 1.0d/n2)));
 		
 	}
@@ -68,17 +68,18 @@ public class Statistics {
 		double m2 = mean(values2);
 		double m3 = mean(values3);
 		double m4 = mean(values4);
-		double oMean = (m1+m2+m3+m4)/4;
+		double oMean = (m1*values1.size()+m2*values2.size()+m3*values3.size()+m4*values4.size())/N;
+		
 		double ssc = Math.pow(m1-oMean, 2)*values1.size()+
 				Math.pow(m2-oMean, 2)*values2.size()
 				+Math.pow(m3-oMean, 2)*values3.size()
 				+Math.pow(m4-oMean, 2)*values4.size();
-		System.out.println("ssc: "+ssc);
+		
 		double sse = variance(values1)*(values1.size()-1) +
 				variance(values2)*(values2.size()-1) +
 				variance(values3)*(values3.size()-1) +
 				variance(values4)*(values4.size()-1);
-		System.out.println("sse: "+sse);
+		
 		double mserr = sse/(N-4);
 		return ssc/(3*mserr);
 	}
