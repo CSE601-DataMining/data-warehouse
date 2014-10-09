@@ -53,7 +53,7 @@ join microarray_fact mf on pb.pb_id = mf.pb_id
 join clinical_fact cf on mf.s_id = cf.s_id
 join disease ds on ds.ds_id = cf.ds_id
 where gf.go_id = 7154
-and ds.name='AML' 'ALL' 'AML' or ds.name='colon tumor' or ds.name = 'breast tumor'
+and ds.name='AML'
 
 
 #6
@@ -67,6 +67,7 @@ where gf.go_id = 7154
 and ds.name='ALL'
 order by cf.p_id
 
+
 #3.1
 select distinct pb.UID--,mf.exp
 from probe pb 
@@ -75,3 +76,4 @@ join clinical_fact cf on mf.s_id = cf.s_id
 join disease ds on ds.ds_id = cf.ds_id
 where ds.name='ALL'
 order by cf.p_id
+

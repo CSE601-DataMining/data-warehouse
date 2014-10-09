@@ -23,14 +23,27 @@
 
     $(function() {
   $("#first-choice").change(function() {
-    var vals = ['one', 'two', 'three'];
-    var $selectTwo = $("#second-choice");
-    $selectTwo.find('option').remove().end();
-    $selectTwo.append("<option>" + "Please select" + "</option>");
-    $.each(vals, function(index, value) {
-	$selectTwo.append("<option>" + value + "</option>");
-    });
     var first = $('#first-choice :selected').val();
+    var vals =[];
+    if (first === 'name'){
+        vals = ['ALL','AML','Colon Cancer','Breast Tumor'];
+    }
+    else if((first === 'type')){
+        vals = ['leukemia','CNS_tumor','adeno-carcinoma','infection'];        
+    }
+    else if((first === 'description')){
+        vals = ['Desp.of flue','tumor'];        
+    }
+    if( $('#second-choice').length )         // use this if you are using id to check
+    {
+        var $selectTwo = $("#second-choice");
+        $selectTwo.find('option').remove().end();
+        $selectTwo.append("<option>" + "Please select" + "</option>");
+        $.each(vals, function(index, value) {
+            $selectTwo.append("<option>" + value + "</option>");
+        });
+         // it exists
+    }
     $('#result').val(first);
     });
 });
@@ -43,15 +56,78 @@ $(function() {
     });
 });
 
-   </script>
+$(function() {
+    $("#first-choice_2").change(function() {
+      var temp = $('#first-choice_2 :selected').val();
+//      var $result2 = $('#result');
+      $('#result_2').val(temp);
+    });
+});
+
+$(function() {
+    $("#mu_id").change(function() {
+      var temp = $('#mu_id :selected').val();
+//      var $result2 = $('#result');
+      $('#result_mu_id').val(temp);
+    });
+});
+
+$(function() {
+    $("#cl_id").change(function() {
+      var temp = $('#cl_id :selected').val();
+//      var $result2 = $('#result');
+      $('#result_cl_id').val(temp);
+    });
+});
+
+$(function() {
+    $("#disease_name").change(function() {
+      var temp = $('#disease_name :selected').val();
+//      var $result2 = $('#result');
+      $('#result_name').val(temp);
+    });
+});
+
+$(function() {
+    $("#go_id").change(function() {
+      var temp = $('#go_id :selected').val();
+//      var $result2 = $('#result');
+      $('#result_go_id').val(temp);
+    });
+});
+
+$(function() {
+    $("#disease_name_4").change(function() {
+      var temp = $('#disease_name_4 :selected').val();
+//      var $result2 = $('#result');
+      $('#result_name_4').val(temp);
+    });
+});
+
+$(function() {
+    $("#disease_name_5").change(function() {
+      var temp = $('#disease_name_5 :selected').val();
+//      var $result2 = $('#result');
+      $('#result_name_5').val(temp);
+    });
+});
+
+$(function() {
+    $("#go_id_5").change(function() {
+      var temp = $('#go_id_5 :selected').val();
+//      var $result2 = $('#result');
+      $('#result_go_id_5').val(temp);
+    });
+});
+
+  </script>
    
   <script>
   $(function() {
     $( "#tabs" ).tabs();
   });
   </script>
-  
-  
+ 
 </head>
 <body>
     <div id ="intro">
@@ -86,22 +162,88 @@ $(function() {
           <option>Please choose from above</option>
         </select>  
             <form>
-                <input id="result" type="hidden" name="result">
-                <input id="result2" type="hidden" name="result2">
-                Submit: <button type="button">Click Me!</button>
+                <input id="result" type="text" name="result">
+                <input id="result2" type="text" name="result2">
+                <button type="button">Find!</button>
             </form>
     </div>
   <div id="tabs-2">
-    <p>Query 2 ka form ithe taka</p>
+    <p>Enter disease description</p>
+    <select id="first-choice_2" required>
+          <option selected value="base_2">Select description</option>
+          <option value="tumor">Tumor</option>
+          <option value="desc. of flue">Desp. of flue</option>
+    </select>
+    <form>
+        <input id="result_2" type="text" name="result">
+        <button type="button">Find!</button>
+    </form>
+
   </div>
   <div id="tabs-3">
-    <p>Query 3 ka form ithe taka</p>
+        <select id = "mu_id" required>
+          <option selected value="base_2">Select measure unit id</option>
+          <option value="0001">0001</option>
+          <option value="0002">0002</option>
+        </select>
+        <select id = "cl_id" required>
+          <option selected value="cl_id">Select cluster id</option>
+          <option value="cl_id_01">00001</option>
+          <option value="cl_id_02">000002</option>
+        </select>
+        <select id = "disease_name" required>
+          <option selected value="base_2">Select name</option>
+          <option value="ALL">ALL</option>
+          <option value="AML">AML</option>
+          <option value="breast cancer">Breast Cancer</option>
+          <option value="colon cancer">Colon Cancer</option>
+        </select>
+        <form>
+            <input id="result_mu_id" type="text" name="result">
+            <input id="result_cl_id" type="text" name="result">
+            <input id="result_name" type="text" name="result">
+            <button type="button">Get result!</button>
+        </form>
+
   </div>
   <div id="tabs-4">
-    <p>Query 4 ka form ithe taka</p>
+        <select id = "go_id" required>
+          <option selected value="go_id">Select Go id</option>
+          <option value="go_id_01">00001</option>
+          <option value="go_id_02">000002</option>
+        </select>
+        <select id = "disease_name_4" required>
+          <option selected value="base_2">Select name</option>
+          <option value="ALL">ALL</option>
+          <option value="AML">AML</option>
+          <option value="breast cancer">Breast Cancer</option>
+          <option value="colon cancer">Colon Cancer</option>
+        </select>
+        <form>
+            <input id="result_go_id" type="text" name="result">
+            <input id="result_name_4" type="text" name="result">
+            <button type="button">Get result!</button>
+        </form>
   </div>
   <div id="tabs-5">
-    <p>Query 5 ka form ithe taka</p>
+         <select id = "go_id_5" required>
+          <option selected value="go_id">Select Go id</option>
+          <option value="go_id_01">00001</option>
+          <option value="go_id_02">000002</option>
+        </select>
+        <select id = "disease_name_5" required>
+          <option selected value="base_2">Select name</option>
+          <option value="ALL">ALL</option>
+          <option value="AML">AML</option>
+          <option value="breast cancer">Breast Cancer</option>
+          <option value="colon cancer">Colon Cancer</option>
+        </select>
+        <form>
+            <input id="result_go_id_5" type="text" name="result">
+            <input id="result_name_5" type="text" name="result">
+            <button type="button">Get result!</button>
+        </form>
+ 
   </div>
   <div id="tabs-6">
     <p>Query 6 ka form ithe taka</p>
