@@ -9,9 +9,9 @@ import java.util.Set;
 import org.apache.commons.math3.stat.inference.TestUtils;
 
 public class Statistics {
-	public static List<Integer> GetValues(List<Map<String,Object>> result)
+	public static ArrayList<Integer> GetValues(List<Map<String,Object>> result)
 	{
-		List<Integer> values = new ArrayList<Integer>();
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		for (Map<String, Object> row : result)
 		{
 			for (Map.Entry<String, Object> entry : row.entrySet())
@@ -224,5 +224,54 @@ public class Statistics {
 		
 		return result;
 		
+	}
+	
+	public static ArrayList<Double> partThree2(List<Map<String, Object>> result1, List<Map<String, Object>> result2)
+	{
+		Integer[][] values1 = getPatients(result1);
+		ArrayList<Integer> values2 = GetValues(result2);
+		//populate arrays
+		HashMap<Integer,ArrayList<Integer>> patients1 = new HashMap<Integer,ArrayList<Integer>>();
+		
+		for (Integer[] value : values1)
+		{
+			if(!patients1.containsKey(value[0]))
+				patients1.put(value[0],new ArrayList<Integer>());
+			
+			patients1.get(value[0]).add(value[1]);
+		}
+		
+		
+		ArrayList<Double> corrs = new ArrayList<Double>();
+		
+		for (Map.Entry<Integer, ArrayList<Integer>> patient1 : patients1.entrySet())
+			corrs.add(correlation(patient1.getValue(),values2));
+	
+		return corrs;
+	}
+	public static Boolean partThree2Result(List<Double> corr1, List<Double> corr2)
+	{
+		
+		double[] dArray1 = new double[corr1.size()];
+		for (int i = 0; i < corr1.size(); i++)
+			dArray1[i] = corr1.get(i);
+		
+		
+		double[] dArray2 = new double[corr2.size()];
+		for (int i = 0; i < corr2.size(); i++)
+			dArray2[i] = corr2.get(i);
+			
+		double pVal = TestUtils.homoscedasticTTest(dArray1, dArray2);
+		
+		if (pVal < 0.01)
+		{
+			System.out.println("Disease hoga tereko");
+			return true;
+		}
+		else
+		{
+			System.out.println("Bach gaya sambha");
+			return false;
+		}
 	}
 }

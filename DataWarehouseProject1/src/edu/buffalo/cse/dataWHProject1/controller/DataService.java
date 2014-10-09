@@ -1,17 +1,9 @@
 package edu.buffalo.cse.dataWHProject1.controller;
-
-
 import java.util.List;
 import java.util.Map;
-
-
 import javax.sql.DataSource;
-
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 //@Service("personService")
@@ -51,6 +43,15 @@ public class DataService {
 		}
 		else if (queryNum.equals("3-15")) {
 			return queryPartThree15(inMap);
+		}
+		else if (queryNum.equals("3-2")) {
+			return queryPartThree2(inMap);
+		}
+		else if (queryNum.equals("3-25")) {
+			return queryPartThree25(inMap);
+		}
+		else if (queryNum.equals("3-26")) {
+			return queryPartThree26(inMap);
 		}
 		else{
 			return null;
@@ -199,6 +200,50 @@ public class DataService {
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
+	
+	private List<Map<String, Object>> queryPartThree2(Map<String, String> inMap){
+		String queryString = "";
+		String name = inMap.get("name");
+		String UIDs = inMap.get("UIDs");
+		queryString = "select cf.p_id, mf.exp "+
+				"from disease ds "+
+				"join clinical_fact cf on cf.ds_id = ds.ds_id "+
+				"join microarray_fact mf on mf.s_id=cf.s_id "+
+				"join probe pb on mf.pb_id=pb.pb_id "+
+				"where pb.UID in ("+UIDs+") "+
+				"and ds.name='"+name+"' "+
+				"order by cf.p_id, pb.UID, mf.exp ";
+				
+		return jdbcTemplate.queryForList(queryString);
+	}
+	
+	private List<Map<String, Object>> queryPartThree25(Map<String, String> inMap){
+		String queryString = "";
+		String name = inMap.get("name");
+		String UIDs = inMap.get("UIDs");
+		queryString = "select cf.p_id, mf.exp "+
+				"from disease ds "+
+				"join clinical_fact cf on cf.ds_id = ds.ds_id "+
+				"join microarray_fact mf on mf.s_id=cf.s_id "+
+				"join probe pb on mf.pb_id=pb.pb_id "+
+				"where pb.UID in ("+UIDs+") "+
+				"and ds.name<>'"+name+"' "+
+				"order by cf.p_id, pb.UID, mf.exp ";
+				
+		return jdbcTemplate.queryForList(queryString);
+	}
+	
+	private List<Map<String, Object>> queryPartThree26(Map<String, String> inMap){
+		String queryString = "";
+		String patientID = inMap.get("patientID");
+		String UIDs = inMap.get("UIDs");
+		queryString = "select "+patientID+" "+
+				"from test_samples ts "+
+				"where test_sample_id in ("+UIDs+") ";
+				
+		return jdbcTemplate.queryForList(queryString);
+	}
+
 
 
 	
