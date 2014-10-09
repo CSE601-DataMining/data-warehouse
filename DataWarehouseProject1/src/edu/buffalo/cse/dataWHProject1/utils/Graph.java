@@ -201,7 +201,19 @@ public class Graph {
 		result1 = ds.query(inMap);
 		inMap.put("name", "AML");
 		result2 = ds.query(inMap);
-		System.out.println(Statistics.parttwo6(result1,null));
+		//System.out.println(Statistics.parttwo6(result1,null));
+		
+		inMap.put("queryNum", "3-1");
+		inMap.put("name", "ALL");
+		result1 = ds.query(inMap);
+		
+		inMap.put("queryNum", "3-15");
+		inMap.put("name", "ALL");
+		result2 = ds.query(inMap);
+		
+		//List<Integer> infoGene = Statistics.FindInfoGene(result1, result2);
+		
+		//System.out.println(infoGene.size());
 	}
 	
 	

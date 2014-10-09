@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.math3.stat.inference.TestUtils;
+
 public class Statistics {
 	public static List<Integer> GetValues(List<Map<String,Object>> result)
 	{
@@ -160,6 +162,8 @@ public class Statistics {
 			HashMap<Integer,ArrayList<Integer>> patients2 = new HashMap<Integer,ArrayList<Integer>>();
 			for (Integer[] value : values2)
 			{
+				if(!patients2.containsKey(value[0]))
+					patients2.put(value[0],new ArrayList<Integer>());
 				patients2.get(value[0]).add(value[1]);
 			}
 			
@@ -169,7 +173,56 @@ public class Statistics {
 		
 			return avgCorr = avgCorr/(patients1.size()*patients2.size());
 		}
+	}
+	
+	public static List<Integer> FindInfoGene(List<Map<String, Object>> result1, List<Map<String, Object>> result2)
+	{
+		Integer[][] values1 = getPatients(result1);
+		Integer[][] values2 = getPatients(result2);
+		HashMap<Integer,ArrayList<Double>> genes1 = new HashMap<Integer,ArrayList<Double>>();
+		HashMap<Integer,ArrayList<Double>> genes2 = new HashMap<Integer,ArrayList<Double>>();
 		
+		for (Integer[] value : values1)
+		{
+			if(!genes1.containsKey(value[0]))
+				genes1.put(value[0],new ArrayList<Double>());
+			
+			genes1.get(value[0]).add(value[1]*1.0d);
+		}		
+		
+		for (Integer[] value : values2)
+		{
+			if(!genes2.containsKey(value[0]))
+				genes2.put(value[0],new ArrayList<Double>());
+			
+			genes2.get(value[0]).add(value[1]*1.0d);
+		}		
+		
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		
+		for (Map.Entry<Integer, ArrayList<Double>> gene : genes1.entrySet())
+		{
+			if(genes2.containsKey(gene.getKey()))
+			{
+				ArrayList<Double> array1 = gene.getValue();
+				double[] dArray1 = new double[array1.size()];
+				for (int i = 0; i < array1.size(); i++)
+					dArray1[i] = array1.get(i);
+				
+				ArrayList<Double> array2 = genes2.get(gene.getKey());
+				double[] dArray2 = new double[array2.size()];
+				for (int i = 0; i < array2.size(); i++)
+					dArray2[i] = array2.get(i);
+					
+				double pVal = TestUtils.homoscedasticTTest(dArray1, dArray2);
+				
+				if (pVal < 0.01)
+					result.add(gene.getKey());
+			}
+			
+		}
+		
+		return result;
 		
 	}
 }
