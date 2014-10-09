@@ -1,10 +1,10 @@
 package edu.buffalo.cse.dataWHProject1.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.RowMapper;
@@ -42,6 +42,9 @@ public class DataService {
 		}
 		else if (queryNum.equals("2-5")) {
 			return queryPartTwo5(inMap);
+		}
+		else if (queryNum.equals("2-6")) {
+			return queryPartTwo6(inMap);
 		}
 		else{
 			return null;
@@ -140,9 +143,33 @@ public class DataService {
 				"join clinical_fact cf on mf.s_id = cf.s_id "+
 				"join disease ds on ds.ds_id = cf.ds_id "+
 				"where gf.go_id = "+goID+" "+
-				"and ds.name='"+name+"'"; 
+				"and ds.name='"+name+"' "+
+				"order by cf.p_id"; 
 				
 		return jdbcTemplate.queryForList(queryString);
 	}
+	
+//	private List<Map<String, Object>> queryPartTwo6(Map<String, String> inMap){
+//		String queryString = "";
+//		String name = inMap.get("name");
+//		int goID = Integer.parseInt(inMap.get("go_id"));
+//		queryString = "select cf.p_id,mf.exp "+
+//				"from gene_fact gf "+
+//				"join probe pb on gf.UID = pb.UID "+
+//				"join microarray_fact mf on pb.pb_id = mf.pb_id "+
+//				"join clinical_fact cf on mf.s_id = cf.s_id "+
+//				"join disease ds on ds.ds_id = cf.ds_id "+
+//				"where gf.go_id = "+goID+" "+
+//				"and ds.name='"+name+"' "+
+//				"order by cf.p_id"; 
+//				
+//		return jdbcTemplate.queryForList(queryString);
+//	}
 
+	private List<Map<String, Object>> queryPartTwo6(Map<String, String> inMap){
+		String queryString = "";
+		queryString = "select cf.p_id, microarray_fact.exp from microarray_fact inner join clinical_fact as cf on microarray_fact.s_id = cf.s_id where microarray_fact.pb_id in ( select probe.pb_id from probe inner join gene_fact on probe.UID = gene_fact.UID where gene_fact.go_id = 7154)and cf.s_id <> 0 and cf.p_id in (select cf_inner.p_id from clinical_fact as cf_inner where cf_inner.ds_id = 2) order by p_id"; 
+									
+		return jdbcTemplate.queryForList(queryString);
+	}
 }

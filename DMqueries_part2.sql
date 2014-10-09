@@ -57,3 +57,12 @@ and ds.name='AML'
 
 
 #6
+select mf.exp,cf.p_id
+from gene_fact gf
+join probe pb on gf.UID = pb.UID
+join microarray_fact mf on pb.pb_id = mf.pb_id
+join clinical_fact cf on mf.s_id = cf.s_id
+join disease ds on ds.ds_id = cf.ds_id
+where gf.go_id = 7154
+and ds.name='ALL'
+order by cf.p_id

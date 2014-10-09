@@ -195,7 +195,13 @@ public class Graph {
 //				Statistics.GetValues(result4)));
 		
 		//2.6
-		
+		inMap.put("queryNum", "2-6");
+		inMap.put("go_id", "7154");
+		inMap.put("name", "ALL");
+		result1 = ds.query(inMap);
+		inMap.put("name", "AML");
+		result2 = ds.query(inMap);
+		System.out.println(Statistics.parttwo6(result1,null));
 	}
 	
 	
