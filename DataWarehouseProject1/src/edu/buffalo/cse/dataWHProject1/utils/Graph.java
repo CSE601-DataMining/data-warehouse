@@ -1,6 +1,7 @@
 package edu.buffalo.cse.dataWHProject1.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 
 public class Graph {
@@ -72,6 +73,7 @@ public class Graph {
 	HashMap<String, Join> graph = new HashMap<String, Join>();
 	HashMap<String, Boolean> visited = new HashMap<String, Boolean>();
 	ArrayList<String> tables = new ArrayList<String>();
+	LinkedList<String> bfs = new LinkedList<String>();
 	
 	public void AddTable(String newTable)
 	{
@@ -110,21 +112,6 @@ public class Graph {
 			if (current.table.equalsIgnoreCase(table2))
 				return "T: " + table1 + "; C: " + current.column + " T: " + current.table;
 			
-			current = current.next;
-		}
-		
-		current = graph.get(table1);
-		while(current != null)
-		{
-			if(current.table.equalsIgnoreCase("gene_fact"))
-				System.out.println("here");
-			if(!visited.get(current.table)) 
-			{
-				System.out.println(table1+"->"+current.table);
-				String find_result = Find(current.table, table2); 
-				if ( find_result != null)
-					return "T: " + table1 + "; C: " + current.column + " T: " + current.table + "; " + find_result;
-			}
 			current = current.next;
 		}
 		
