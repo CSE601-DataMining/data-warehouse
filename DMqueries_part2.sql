@@ -28,8 +28,6 @@ where ds.name='ALL'
 and mf.mu_id = '001'
 and gf.cl_id = '00002'
 
-select * from go
-
 #4
 select mf.exp
 from gene_fact gf
@@ -40,5 +38,13 @@ join disease ds on ds.ds_id = cf.ds_id
 where gf.go_id = 12502
 and ds.name='ALL'
 
-select * from gene_fact 
-gf.go_id = 12502
+#5
+
+select mf.exp
+from gene_fact gf
+join probe pb on gf.UID = pb.UID
+join microarray_fact mf on pb.pb_id = mf.pb_id
+join clinical_fact cf on mf.s_id = cf.s_id
+join disease ds on ds.ds_id = cf.ds_id
+where gf.go_id = 7154
+and ds.name='ALL' 'AML' or ds.name='colon tumor' or ds.name = 'breast tumor')
