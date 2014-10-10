@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Data warehousing</title>
 
 <script type="text/javascript"
     src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -17,7 +17,9 @@
             url : 'query',
             data : str,
             success : function(data) {
-                $('#result').html(data);
+            	var res = data.split("|");
+                $('#result').html("" + res[0]);
+                $('#count').html("Number of rows: "  + res[1]);
             },
             failure : function(data) {
                 $('#result').html("Ajax failed");
@@ -59,11 +61,13 @@
         	<input type="hidden" name="inputMap['queryNum']" value="2-1" />
         	<input type="submit" value="query" />
         </form:form>
-        
+        <div id="count"></div>
+        <br>
         <div id="result"></div>
          
         <br>
         <p>
+        
         </p>
     </div>
 </body>

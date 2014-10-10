@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_20">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_25">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
@@ -24,6 +24,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-tx-3.2.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.mysql.jdbc_5.1.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Kaustubh/Projects/Data Warehouse/data-warehouse/DataWarehouseProject1/Dependencies/commons-math3-3.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-lib.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-math3-3.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
